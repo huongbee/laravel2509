@@ -88,6 +88,10 @@ Route::group(['prefix'=>'controller'],function(){
         'uses'=>"PageController@getForm",
         'as'=>'form'
     ]);
+    Route::post('form',[
+        'uses'=>"PageController@postForm",
+        'as'=>'form'
+    ]);
 
 
 });

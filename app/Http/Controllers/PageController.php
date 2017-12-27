@@ -31,4 +31,20 @@ class PageController extends Controller
     public function getForm(){
         return view('form');
     }
+
+    function postForm(Request $req){
+        
+        if($req->hasFile('hinh')){
+            $file = $req->hinh;
+            //dd($file);
+            //upload
+            
+        }
+        else{
+            echo "Ban chua chon file";
+        }
+    }
+
+
+
 }

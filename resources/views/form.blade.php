@@ -7,7 +7,9 @@
     <title>Upload file</title>
 </head>
 <body>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="{{route('form')}}" method="post" enctype="multipart/form-data">
+        <!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
+        {{csrf_field()}}
         <input type="file" name="hinh">
         <button type="submit">Upload</button>
     </form>
