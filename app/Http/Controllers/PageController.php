@@ -59,10 +59,15 @@ class PageController extends Controller
                 //return redirect()->back()->with('error','File to large!');
                 return redirect()->route('form')->with('error','File to large!');
             }
-
-            $file->move('images',$nameFile);
             //only accept doc, docx, pdf, xlsx, xls
-            //rename file
+            $arrExt = ['doc', 'docx', 'pdf', 'xlsx', 'xls'];
+            if(!in_array($ext2,$arrExt)){
+                return redirect()->route('form')->with('error','File not accept');
+            }
+             //rename file
+            $file->move('images',time().$nameFile);
+            
+           
 
 
             echo "successfully";
