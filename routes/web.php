@@ -69,7 +69,29 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('edit-product',function(){
         echo "trang edit sp";
     });
+
 });
+
+Route::group(['prefix'=>'controller'],function(){
+
+    //controller/demo
+    Route::get('demo','PageController@getName');
+
+    //Route::get('product/{name}/{id}','PageController@getProduct')->name('route1');
+
+    Route::get('product/{name}/{id}',[
+        'uses'=>'PageController@getProduct',
+        'as'=> 'route1'
+    ]);
+
+    Route::get('form',[
+        'uses'=>"PageController@getForm",
+        'as'=>'form'
+    ]);
+
+
+});
+
 
 
 
