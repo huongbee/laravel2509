@@ -21,10 +21,14 @@ class PageController extends Controller
 
     // public function getForm(){
     //     $data = "send data to view";
-    //     return view('form-demo.blade.php',['a'=>$data]);
+    //     return view('form-demo',['a'=>$data]);
     // }
+    // public function getForm(){
+    //     return view('pages.trangchu');
+    //     //return view('pages/trangchu');
+    // }
+
     public function getForm(){
-        return view('pages.trangchu');
-        //return view('pages/trangchu');
+        return view('form');
     }
 }
