@@ -38,7 +38,34 @@ class PageController extends Controller
             $file = $req->hinh;
             //dd($file);
             //upload
-            
+            $nameFile = $file->getClientOriginalName();
+            echo $nameFile;
+            echo "<br>";
+
+            $ext = $file->extension(); //theo Mime type
+            echo $ext;
+            echo "<br>";
+
+            $ext2 = $file->getClientOriginalExtension(); //theo ten file
+            echo $ext2;
+            echo "<br>";
+             
+            $size = $file->getSize(); //bytes
+            echo $size;
+            echo "<br>";
+
+            //check file size : <1Mb
+            if($size>1024*1024){
+                //return redirect()->back()->with('error','File to large!');
+                return redirect()->route('form')->with('error','File to large!');
+            }
+
+            $file->move('images',$nameFile);
+            //only accept doc, docx, pdf, xlsx, xls
+            //rename file
+
+
+            echo "successfully";
         }
         else{
             echo "Ban chua chon file";

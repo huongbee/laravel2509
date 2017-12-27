@@ -7,6 +7,9 @@
     <title>Upload file</title>
 </head>
 <body>
+    @if(Session::has('error'))
+        {{Session::get('error')}}
+    @endif
     <form action="{{route('form')}}" method="post" enctype="multipart/form-data">
         <!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
         {{csrf_field()}}
