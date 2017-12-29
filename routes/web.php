@@ -100,7 +100,7 @@ Route::group(['prefix'=>'controller'],function(){
         'uses'=>"PageController@getFormInput",
         'as'=>'form2'
     ]);
-    
+
     Route::post('form-input',[
         'uses'=>"PageController@postFormInput",
         'as'=>'form2'
@@ -109,7 +109,6 @@ Route::group(['prefix'=>'controller'],function(){
     //email
     //password
     //birthdate
-    //gender
     //address
     //age
 
