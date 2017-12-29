@@ -88,11 +88,18 @@ class PageController extends Controller
         // echo $email;
         // $input = $req->all();
         // dd($input);
+        $input = [
+            'email'=>'required|email|min:5', //email ko rỗng, phải đúng định dạng
+            'hinhanh'=>'required|image',
+            'birthdate'=>'required|date_format:d/m/Y'
+        ];
+        $mess = [
+            'email.required'=>'Email không rỗng',
+            'email.email'=>'Email không đúng định dạng example@mail.com',
+            'email.min'=>"Email ít nhất :min kí tự"
+        ];
 
-
-        $req->validate([
-            'email'=>'required|email|min:5' //email ko rỗng, phải đúng định dạng
-        ]);
+        $req->validate($input,$mess);
 
         $email = $req->email;
         echo $email;

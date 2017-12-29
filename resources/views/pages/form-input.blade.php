@@ -24,7 +24,7 @@
 
 				@endif
 
-				<form method="post" action="{{route('form2')}}">
+				<form method="post" action="{{route('form2')}}" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label>
@@ -51,6 +51,9 @@
 					<div class="form-group">
 						<label for="exampleInputPassword1">Confirm Password</label>
 						<input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+					</div>
+					<div class="form-group">
+						<input type="file" name="hinhanh">
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
