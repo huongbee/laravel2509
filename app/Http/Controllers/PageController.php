@@ -36,6 +36,7 @@ class PageController extends Controller
         
         if($req->hasFile('hinh')){
             $file = $req->hinh;
+            //$file = $req->file('hinh');
             //dd($file);
             //upload
             $nameFile = $file->getClientOriginalName();
@@ -66,8 +67,6 @@ class PageController extends Controller
             }
              //rename file
             $file->move('images',time().$nameFile);
-            
-           
 
 
             echo "successfully";
@@ -81,6 +80,23 @@ class PageController extends Controller
         return view('pages.form-input');
     }
 
+    function postFormInput(Request $req){
+        //$email = $req->email;
+        // $email = $req->input('email');
+        // $address = $req->address;
+        // echo $address;
+        // echo $email;
+        // $input = $req->all();
+        // dd($input);
+
+
+        $req->validate([
+            'email'=>'required|email|min:5' //email ko rỗng, phải đúng định dạng
+        ]);
+
+        $email = $req->email;
+        echo $email;
+    }
 
 
 }
