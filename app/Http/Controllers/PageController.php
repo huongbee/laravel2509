@@ -92,7 +92,9 @@ class PageController extends Controller
         $input = [
             'email'=>'required|email|min:5', //email ko rỗng, phải đúng định dạng
             'hinhanh'=>'required|image',
-            'birthdate'=>'required|date_format:d/m/Y'
+            'birthdate'=>'required|date_format:d/m/Y',
+            'password' => 'required|min:6| max:20',
+            'confirm_password'=>'same:password'
         ];
         $mess = [
             'email.required'=>'Email không rỗng',

@@ -60,6 +60,14 @@
 					<div class="form-group">
 						<label for="exampleInputPassword1">Confirm Password</label>
 						<input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+						<br> <?php if($errors->has('confirm_password')): ?>
+						<div class="alert alert-danger">
+							<?php $__currentLoopData = $errors->get('confirm_password'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $err): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <?php echo e($err); ?>
+
+							<br> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						</div>
+
+						<?php endif; ?>
 					</div>
 					<div class="form-group">
 						<input type="file" name="hinhanh">

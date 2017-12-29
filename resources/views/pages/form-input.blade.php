@@ -28,7 +28,7 @@
 					{{csrf_field()}}
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label>
-						<input type="text" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{old('email')}}"> @if($errors->any())
+						<input type="text" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{old('email')}}"> @if($errors->has('email'))
 						<div class="alert alert-danger">
 							@foreach($errors->get('email') as $err) {{$err}}
 							<br> @endforeach
@@ -38,7 +38,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Birthdate</label>
-						<input type="text" class="form-control" name="birthdate" placeholder="dd/mm/yyyy" value="{{old('birthdate')}}"> @if($errors->any())
+						<input type="text" class="form-control" name="birthdate" placeholder="dd/mm/yyyy" value="{{old('birthdate')}}"> @if($errors->has('birthdate'))
 						<div class="alert alert-danger">
 							@foreach($errors->get('birthdate') as $err) {{$err}}
 							<br> @endforeach
@@ -63,6 +63,13 @@
 					<div class="form-group">
 						<label for="exampleInputPassword1">Confirm Password</label>
 						<input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+						<br> @if($errors->has('confirm_password'))
+						<div class="alert alert-danger">
+							@foreach($errors->get('confirm_password') as $err) {{$err}}
+							<br> @endforeach
+						</div>
+
+						@endif
 					</div>
 					<div class="form-group">
 						<input type="file" name="hinhanh">
