@@ -13,6 +13,9 @@
 
 	<div class="container">
 		<div class="row justify-content-center">
+
+			<h1>{{$data}}</h1>
+
 			<div class="col-6">
 				<h2>Sign Up</h2>
 

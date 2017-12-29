@@ -13,6 +13,9 @@
 
 	<div class="container">
 		<div class="row justify-content-center">
+
+			<h1><?php echo e($data); ?></h1>
+
 			<div class="col-6">
 				<h2>Sign Up</h2>
 
@@ -23,7 +26,7 @@
 
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label>
-						<input type="text" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo e(old('email')); ?>"> <?php if($errors->any()): ?>
+						<input type="text" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo e(old('email')); ?>"> <?php if($errors->has('email')): ?>
 						<div class="alert alert-danger">
 							<?php $__currentLoopData = $errors->get('email'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $err): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <?php echo e($err); ?>
 
@@ -34,7 +37,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Birthdate</label>
-						<input type="text" class="form-control" name="birthdate" placeholder="dd/mm/yyyy" value="<?php echo e(old('birthdate')); ?>"> <?php if($errors->any()): ?>
+						<input type="text" class="form-control" name="birthdate" placeholder="dd/mm/yyyy" value="<?php echo e(old('birthdate')); ?>"> <?php if($errors->has('birthdate')): ?>
 						<div class="alert alert-danger">
 							<?php $__currentLoopData = $errors->get('birthdate'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $err): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <?php echo e($err); ?>
 

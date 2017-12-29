@@ -78,6 +78,7 @@ class PageController extends Controller
     }
 
     function getFormInput(){
+        
         return view('pages.form-input');
     }
 
