@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 
 class PageController extends Controller
 {
@@ -99,7 +100,16 @@ class PageController extends Controller
             'email.min'=>"Email ít nhất :min kí tự"
         ];
 
-        $req->validate($input,$mess);
+        //$req->validate($input,$mess);
+        $validator = Validator::make($req->all(), $input,$mess);
+
+        if($validator->fails()) {
+            return redirect()->route('form2')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+
 
         $email = $req->email;
         echo $email;
