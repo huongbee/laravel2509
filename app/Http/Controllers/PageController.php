@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
-use Illuminate\Http\Response;
+use Response2;
 
 class PageController extends Controller
 {
@@ -149,7 +149,7 @@ class PageController extends Controller
     }
 
     function setCookie(){
-        $res = new Response;
+        $res = new Response2;
         $res->withCookie('name','Ti',0.5);
 
         echo "created!";
@@ -157,7 +157,7 @@ class PageController extends Controller
         return $res;
     }
 
-    function getCookie(){
+    function getCookie(Request $request){
         echo $request->cookie('name');
     }
 }

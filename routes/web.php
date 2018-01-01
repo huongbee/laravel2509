@@ -139,5 +139,13 @@ Route::get('get-cookie',[
 ]);
 
 
+Route::get('template-1',[
+    'uses'=>'HomeController@getHome',
+    'as'=>'trang-chu'
+]);
 
+Route::get('template-2',[
+    'uses'=>'HomeController@getDetail',
+    'as'=>'chi-tiet'
+]);
 
