@@ -116,7 +116,27 @@ Route::group(['prefix'=>'controller'],function(){
 });
 
 
+Route::get('set-session',[
+    'uses'=>'PageController@setSession'
+]);
 
+Route::get('get-session',[
+    'uses'=>'PageController@getSession'
+]);
+
+Route::get('delete-session',[
+    'uses'=>'PageController@deleteSession'
+]);
+
+
+
+Route::get('set-cookie',[
+    'uses'=>'PageController@setCookie'
+]);
+
+Route::get('get-cookie',[
+    'uses'=>'PageController@getCookie'
+]);
 
 
 

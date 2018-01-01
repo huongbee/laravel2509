@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use View;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //$data = 'KPT';
         //View::share(compact('data')); //all view
-        
+
         View::composer(['pages.form-input','welcome'],function($view){
             $data = 'KPT';
             return $view->with(['data'=>$data]);

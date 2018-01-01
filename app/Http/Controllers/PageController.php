@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
+use Session;
+use Illuminate\Http\Response;
 
 class PageController extends Controller
 {
@@ -119,4 +121,43 @@ class PageController extends Controller
     }
 
 
+    
+    function setSession(){
+        session::put('name','Ti');
+        echo "created!";
+    }
+
+    function getSession(Request $request){
+        
+        if(Session::has('name'))
+            echo Session::get('name');
+        else echo "not yet setup";
+
+
+        $data = $request->session()->all();
+        dd($data);
+    }
+
+    function deleteSession(){
+        if(Session::has('name')){
+            //Session::forget('name');
+            Session::flush();
+            echo "deleted session 'name'";
+        }
+        
+        else echo "not yet setup";
+    }
+
+    function setCookie(){
+        $res = new Response;
+        $res->withCookie('name','Ti',0.5);
+
+        echo "created!";
+
+        return $res;
+    }
+
+    function getCookie(){
+        echo $request->cookie('name');
+    }
 }
