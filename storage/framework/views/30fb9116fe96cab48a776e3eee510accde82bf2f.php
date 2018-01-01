@@ -1,7 +1,8 @@
  
 
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('title','Trang chu'); ?>
 
+<?php $__env->startSection('content'); ?>
     <h2>Noi dung trang chu</h2>
 <?php $__env->stopSection(); ?>
 
