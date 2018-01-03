@@ -39,15 +39,25 @@ class HomeController extends Controller
         //         ])
         //         ->get();
 
+        // $foods = DB::table('foods')
+        //         ->selectRaw('name as TenSP, price as DonGia')
+        //         ->where([
+        //             ['id' , '>', 1]
+        //         ])
+        //         ->orWhere([
+        //             ['price','>', 50000]
+        //         ])
+        //         ->get();
+        // $foods = DB::table('foods')
+        //         ->selectRaw('name as TenSP, price as DonGia')
+        //         ->whereBetween('price', [50000,200000])
+        //         ->get();
+
         $foods = DB::table('foods')
                 ->selectRaw('name as TenSP, price as DonGia')
-                ->where([
-                    ['id' , '>', 1]
-                ])
-                ->orWhere([
-                    ['price','>', 50000]
-                ])
+                ->whereIn('id', [1,2,3,5])
                 ->get();
+                
         dd($foods);
     }
 }
