@@ -156,16 +156,26 @@ Route::get('schema-demo',function(){
     //     $table->string('name','100');
     //     $table->timestamps();
     // });
-    Schema::create('product',function($table){
-        $table->increments('id');
-        $table->string('name','100');
-        $table->integer('id_type')->unsigned();
-        $table->timestamps();
+    // Schema::create('product',function($table){
+    //     $table->increments('id');
+    //     $table->string('name','100');
+    //     $table->integer('id_type')->unsigned();
+    //     $table->timestamps();
 
-        $table->foreign('id_type')->references('id')->on('product_type');
+    //     $table->foreign('id_type')->references('id')->on('product_type');
+    // });
+
+    Schema::table('product',function($table){
+        // $table->float('price',9,3)->change();
+        // //$table->text('detail',500)->change();
+        // $table->string('name',50)->change();
+        $table->renameColumn('detail','description');
+        $table->dropColumn('price');
     });
+    echo "updated!";
 
-    echo "created!";
+    // Schema::dropIfExists('users');
+    // echo 'deleted!';
 
 });
 
