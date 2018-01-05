@@ -182,3 +182,7 @@ Route::get('schema-demo',function(){
 Route::group(['prefix'=>'query-builder'],function(){
     Route::get('product','HomeController@getAllProduct');
 });
+
+Route::group(['prefix'=>'model'],function(){
+    Route::get('product','HomeController@getProducts');
+});

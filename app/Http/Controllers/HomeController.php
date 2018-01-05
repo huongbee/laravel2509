@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Food;
 
 class HomeController extends Controller
 {
@@ -117,6 +118,38 @@ class HomeController extends Controller
                 ->whereBetween('price',[50000, 100000]) 
                 ->groupBy('TenLoai')
                 ->get();
+        dd($foods);
+    }
+
+    function getProducts(){
+        //$foods = Food::get(); //Food::all();
+
+        // $foods = Food::selectRaw('name as TenSP, price as DonGia')
+        //         ->whereIn('id', [1,2,3,5])
+        //         ->orderBy('DonGia','ASC')
+        //         ->get();
+
+        $foods = Food::with('PageUrl')
+                // ->join('food_type as t',function($join){
+                //     $join->on('t.id','=','foods.id_type');
+                // })
+                ->whereIn('foods.id',[1,2,3,4,5,6])
+                ->get();
+
+        foreach($foods as $sp){
+            echo "- Tên sp: ".$sp->name;
+            echo "<br>";
+
+            echo "- Giá sp: ".$sp->price;
+            echo "<br>";
+
+            echo "- URL sp: ".$sp->PageUrl->url;
+            echo "<br>";
+
+            
+            echo "<hr>";
+        }
+
         dd($foods);
     }
 }
