@@ -20,6 +20,7 @@ class ComposerAutoloaderInit8013db931d6e40730abf9467e757b7f2
         }
 
         spl_autoload_register(array('ComposerAutoloaderInit8013db931d6e40730abf9467e757b7f2', 'loadClassLoader'), true, true);
+        
         self::$loader = $loader = new \Composer\Autoload\ClassLoader();
         spl_autoload_unregister(array('ComposerAutoloaderInit8013db931d6e40730abf9467e757b7f2', 'loadClassLoader'));
 
