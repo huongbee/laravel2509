@@ -7,6 +7,8 @@ use DB;
 use App\Food;
 use App\FoodType;
 use App\Menu;
+use App\User;
+use App\Role;
 
 class HomeController extends Controller
 {
@@ -188,16 +190,37 @@ class HomeController extends Controller
 
         //liệt ke ds menu, cho biết mã món ăn và số lượng của món ăn theo từng chi tiết
 
-        $menus = Menu::with('MenuDetail', 'MenuDetail.Food', 'MenuDetail.Food.FoodType')->get();
-        foreach($menus as $menu){
-            echo "<b>".$menu->name.":</b><br>";
-            foreach($menu->MenuDetail as $detail){
-                echo "- Mã món: ".$detail->id_food.':';
-                echo $detail->Food->name;
-                echo " thuộc loại <b>".$detail->Food->FoodType->name.'</b>';
-                echo " và số lượng là: ".$detail->quantity .'<br>';
-            }
+        // $menus = Menu::with('MenuDetail', 'MenuDetail.Food', 'MenuDetail.Food.FoodType')->get();
+        // foreach($menus as $menu){
+        //     echo "<b>".$menu->name.":</b><br>";
+        //     foreach($menu->MenuDetail as $detail){
+        //         echo "- Mã món: ".$detail->id_food.':';
+        //         echo $detail->Food->name;
+        //         echo " thuộc loại <b>".$detail->Food->FoodType->name.'</b>';
+        //         echo " và số lượng là: ".$detail->quantity .'<br>';
+        //     }
             
+        //     echo "<hr>";
+        // }
+
+        //liệt ke ds user, cho biết quyền của từng user
+        // $users =  User::with('Role')->get();
+        // foreach($users as $user){
+        //     echo $user->username ;
+        //     echo ":<br>";
+        //     foreach($user->Role as $quyen){
+        //         echo '- '.$quyen->role ."<br>";
+        //     }
+        //     echo "<hr>";
+        // }
+
+        $roles =  Role::with('User')->get();
+        foreach($roles as $role){
+            echo $role->role ;
+            echo ":<br>";
+            foreach($role->User as $u){
+                echo '- '.$u->username ."<br>";
+            }
             echo "<hr>";
         }
 
