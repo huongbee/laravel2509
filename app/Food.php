@@ -8,11 +8,16 @@ class Food extends Model
 {
     protected $table = 'foods';
 
+    //1-1
     function PageUrl(){
-        return $this->hasOne('App\PageUrl','id_food','id');
-        // id_url: foreign key
-        // id: primary of foods
-        
+        return $this->belongsTo('App\PageUrl','id_url','id');
+    }
+
+    //1-n
+    function FoodType(){
+        return $this->belongsTo('App\FoodType','id_type','id');
+        //id_type: fk
+        //id : type // other key
     }
 
     //

@@ -9,6 +9,9 @@ class PageUrl extends Model
     protected $table = 'page_url';
 
     function Food(){
-        return $this->belongsTo('App\Food','id_food','id');
+        return $this->hasOne('App\Food','id_url','id');
+        // id_url: foreign key
+        // id: primary of url
+        
     }
 }
