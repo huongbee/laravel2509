@@ -15,6 +15,9 @@ class Food extends Model
 
     //1-n
     function FoodType(){
+
+        //ko dùng foreach()
+        
         return $this->belongsTo('App\FoodType','id_type','id');
         //id_type: fk
         //id : type // other key

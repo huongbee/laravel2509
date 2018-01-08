@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Food;
 use App\FoodType;
+use App\Menu;
 
 class HomeController extends Controller
 {
@@ -163,17 +164,40 @@ class HomeController extends Controller
          * 
          */
 
-        $types = FoodType::with('Food')->get();
-        //dd($types);
-        foreach($types as $type){
-            echo "<h3>Loại ".$type->id . ' - '. $type->name .':</h3><br>';
+        // $types = FoodType::with('Food')->get();
+            // //dd($types);
+            // foreach($types as $type){
+            //     echo "<h3>Loại ".$type->id . ' - '. $type->name .
+            //         ' có '.count($type->Food).' sản phẩm:</h3><br>';
 
-            $stt = 1;
-            foreach($type->Food as $food){
-                echo $stt++." - ".$food->name."<br>";
+            //     $stt = 1;
+            //     foreach($type->Food as $food){
+            //         echo $stt++." - ".$food->name."<br>";
+            //     }
+            //     echo "<hr>";
+            // }
+
+            //liet kê danh sách sp, cho biết tên loại
+            // $foods = Food::with('FoodType')->get();
+            // //dd($foods);
+            // foreach($foods as $food){
+            //     echo $food->id . ' - '.$food->name;
+            //     echo ' thuộc loại <b>'. $food->FoodType->name. "</b>";
+            //     echo "<br>";
+        // }
+
+        //liệt ke ds menu, cho biết mã món ăn và số lượng của món ăn theo từng chi tiết
+
+        $menus = Menu::with('MenuDetail')->get();
+        foreach($menus as $menu){
+            echo "<b>".$menu->name.":</b><br>";
+            foreach($menu->MenuDetail as $detail){
+                echo "- Mã món: ".$detail->id_food. " và số lượng là: ".$detail->quantity .'<br>';
             }
+            
             echo "<hr>";
         }
+
     }
 
 
