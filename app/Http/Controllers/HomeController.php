@@ -188,11 +188,14 @@ class HomeController extends Controller
 
         //liệt ke ds menu, cho biết mã món ăn và số lượng của món ăn theo từng chi tiết
 
-        $menus = Menu::with('MenuDetail')->get();
+        $menus = Menu::with('MenuDetail', 'MenuDetail.Food', 'MenuDetail.Food.FoodType')->get();
         foreach($menus as $menu){
             echo "<b>".$menu->name.":</b><br>";
             foreach($menu->MenuDetail as $detail){
-                echo "- Mã món: ".$detail->id_food. " và số lượng là: ".$detail->quantity .'<br>';
+                echo "- Mã món: ".$detail->id_food.':';
+                echo $detail->Food->name;
+                echo " thuộc loại <b>".$detail->Food->FoodType->name.'</b>';
+                echo " và số lượng là: ".$detail->quantity .'<br>';
             }
             
             echo "<hr>";
