@@ -24,4 +24,7 @@ class Food extends Model
     }
 
     //
+    function Menu(){
+        return $this->belongsToMany("App\Menu","menu_detail",'id_food','id_menu');
+    }
 }

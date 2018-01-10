@@ -236,24 +236,68 @@ class HomeController extends Controller
         //     echo "<hr>";
         // }
 
-        $menus = Menu::with("Food")->get()->toArray();
-        //  dd($menus);
-        foreach($menus as $menu){
-            echo "<b>".$menu['id'].' - '.$menu['name'];
-            echo ":</b><br>";
-            foreach($menu['food'] as $food){
-                echo $food['id'] .' - '.$food['name'];
-                echo "<br>";
-            }
-            echo "<hr>";
-        }
+        // $menus = Menu::with("Food")->get()->toArray();
+        // //  dd($menus);
+        // foreach($menus as $menu){
+        //     echo "<b>".$menu['id'].' - '.$menu['name'];
+        //     echo ":</b><br>";
+        //     foreach($menu['food'] as $food){
+        //         echo $food['id'] .' - '.$food['name'];
+        //         echo "<br>";
+        //     }
+        //     echo "<hr>";
+        // }
 
 
         //liệt kê ds món ăn, cho  biết món ăn đang thuộc những thực đơn nào
 
-        //cho biết món ăn có tên "Bánh canh" đang có ở những thực đơn nào?
+        // $foods = Food::with('Menu')->get();
+        // foreach($foods as $food){
+        //      echo "<b>".$food->id.' - '.$food->name;
+        //     echo ":</b><br>";
+        //     foreach($food->Menu as $menu){
+        //         echo ' - '.$menu->name;
+        //         echo "<br>";
+        //     }
+        //     echo "<hr>";
+        // }
+        //cho biết món ăn có tên "Tôm sú nướng ngũ vị" đang có ở những thực đơn nào?
+        // $food = Food::with('Menu')
+        //         ->where('name','Tôm sú nướng ngũ vị')
+        //         ->first();
+                
+        // echo "<b>".$food->id.' - '.$food->name;
+        // echo ":</b><br>";
+        // foreach($food->Menu as $menu){
+        //     echo ' - '.$menu->name;
+        //     echo "<br>";
+        // }
 
+        //Liệt kê ds loại món ăn, cho biết loại đó có trong những chi tiết menu nào?
 
+        // $types = FoodType::with('MenuDetail')->get();
+        // foreach($types as $type){
+        //     echo "<b>".$type->id.' - '.$type->name;
+        //     echo ":</b><br>";
+        //     foreach($type->MenuDetail as $detail){
+        //         echo ' - '.$detail->id;
+        //         echo "<br>";
+        //     }
+        //     echo "<hr>";
+        // }
+
+        ////Liệt kê chi tiết menu, cho biết chi tiết đó có những món ăn đang thuộc những loại nào?
+
+        $details = \App\MenuDetail::with('FoodType')->get();
+        foreach($details as $detail){
+            echo "<b>".$detail->id;
+            echo ":</b><br>";
+            foreach($detail->FoodType as $type){
+                echo ' - '.$type->name;
+                echo "<br>";
+            }
+            echo "<hr>";
+        }
     }
 
 

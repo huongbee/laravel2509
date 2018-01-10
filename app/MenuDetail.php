@@ -11,4 +11,9 @@ class MenuDetail extends Model
     function Food(){
         return $this->belongsTo('App\Food','id_food','id');
     }
+
+    function FoodType(){
+        //return $this->belongsToMany("App\FoodType","foods",'id_type','id_');
+        
+    }
 }

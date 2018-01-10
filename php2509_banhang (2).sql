@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 10, 2018 at 02:27 PM
+-- Generation Time: Jan 10, 2018 at 02:48 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.1.12
 
@@ -474,6 +474,27 @@ INSERT INTO `page_url` (`id`, `url`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `role_resource`
+--
+
+CREATE TABLE `role_resource` (
+  `id` int(11) NOT NULL,
+  `role` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role_resource`
+--
+
+INSERT INTO `role_resource` (`id`, `role`) VALUES
+(1, 'admin'),
+(2, 'guest'),
+(3, 'staff'),
+(4, 'CEO');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `role_user`
 --
 
@@ -582,6 +603,12 @@ ALTER TABLE `page_url`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `role_resource`
+--
+ALTER TABLE `role_resource`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `role_user`
 --
 ALTER TABLE `role_user`
@@ -644,6 +671,12 @@ ALTER TABLE `menu_detail`
 --
 ALTER TABLE `page_url`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT for table `role_resource`
+--
+ALTER TABLE `role_resource`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `role_user`
