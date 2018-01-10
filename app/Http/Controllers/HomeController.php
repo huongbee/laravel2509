@@ -190,13 +190,13 @@ class HomeController extends Controller
 
         //liệt ke ds menu, cho biết mã món ăn và số lượng của món ăn theo từng chi tiết
 
-        // $menus = Menu::with('MenuDetail', 'MenuDetail.Food', 'MenuDetail.Food.FoodType')->get();
+        // $menus = Menu::with('MenuDetail', 'MenuDetail.Food')->get();
         // foreach($menus as $menu){
         //     echo "<b>".$menu->name.":</b><br>";
         //     foreach($menu->MenuDetail as $detail){
         //         echo "- Mã món: ".$detail->id_food.':';
         //         echo $detail->Food->name;
-        //         echo " thuộc loại <b>".$detail->Food->FoodType->name.'</b>';
+        //         // echo " thuộc loại <b>".$detail->Food->FoodType->name.'</b>';
         //         echo " và số lượng là: ".$detail->quantity .'<br>';
         //     }
             
@@ -214,17 +214,45 @@ class HomeController extends Controller
         //     echo "<hr>";
         // }
 
-        $roles =  Role::with('User')->get();
-        foreach($roles as $role){
-            echo $role->role ;
-            echo ":<br>";
-            foreach($role->User as $u){
-                echo '- '.$u->username ."<br>";
+        // $roles =  Role::with('User')->get();
+        // foreach($roles as $role){
+        //     echo $role->role ;
+        //     echo ":<br>";
+        //     foreach($role->User as $u){
+        //         echo '- '.$u->username ."<br>";
+        //     }
+        //     echo "<hr>";
+        // }
+
+        //cho bieets ds menu và tên các món ăn có trong menu đó
+        // $menus = Menu::with("Food")->get();
+        // foreach($menus as $menu){
+        //     echo "<b>".$menu->id.' - '.$menu->name;
+        //     echo ":</b><br>";
+        //     foreach($menu->Food as $food){
+        //         echo $food->id .' - '.$food->name;
+        //         echo "<br>";
+        //     }
+        //     echo "<hr>";
+        // }
+
+        $menus = Menu::with("Food")->get()->toArray();
+        //  dd($menus);
+        foreach($menus as $menu){
+            echo "<b>".$menu['id'].' - '.$menu['name'];
+            echo ":</b><br>";
+            foreach($menu['food'] as $food){
+                echo $food['id'] .' - '.$food['name'];
+                echo "<br>";
             }
             echo "<hr>";
         }
 
-        //cho bieets ds menu và tên các món ăn có trong menu đó
+
+        //liệt kê ds món ăn, cho  biết món ăn đang thuộc những thực đơn nào
+
+        //cho biết món ăn có tên "Bánh canh" đang có ở những thực đơn nào?
+
 
     }
 
