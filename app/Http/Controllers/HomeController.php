@@ -224,6 +224,8 @@ class HomeController extends Controller
             echo "<hr>";
         }
 
+        //cho bieets ds menu và tên các món ăn có trong menu đó
+
     }
 
 
