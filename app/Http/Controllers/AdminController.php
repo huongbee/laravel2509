@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\User;
 use Hash;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -13,7 +14,7 @@ class AdminController extends Controller
         return view('login.register');
     }
     function postAdminRegister(Request $req){
-         $input = [
+        $input = [
             'email'=>'required|email|min:5',
             'password' => 'required|min:6| max:20',
             'confirm_pw'=>'same:password',
@@ -59,5 +60,41 @@ class AdminController extends Controller
     }
     function getAdminLogin(){
         return view('login.login');
+    }
+
+    function postAdminLogin(Request $req){
+        $input = [
+            'email'=>'required|email|min:5',
+            'password' => 'required|min:6| max:20'
+        ];
+        $mess = [
+            'email.required'=>'Email không rỗng',
+            'email.email'=>'Email không đúng định dạng example@mail.com',
+            'email.min'=>"Email ít nhất :min kí tự"
+        ];
+
+        $validator = Validator::make($req->all(), $input,$mess);
+
+        if($validator->fails()) {
+            return redirect()->route('admin_register')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $infor = [
+            'email'=>$req->email,
+            'password'=>$req->password
+        ];
+        $remember = $req->remember == 1 ? 1 : 0;
+        if(Auth::attempt($infor,$remember)){
+            //login thanh cong
+            $user = Auth::user();
+            echo $user->fullname;
+            //dd($user);
+            return redirect()->route('trang-chu');
+        }
+        else{
+            return redirect()->route('admin_login')->with('error',"Đăng nhập không thành công");
+        }
     }
 }

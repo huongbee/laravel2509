@@ -39,7 +39,11 @@
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" name="password" placeholder="Password">
                     </div>
+                    <div class="form-group">
+                        <label> <input type="checkbox" name="remember" value="1"> Remember me</label>
+                    </div>
                     <button type="submit" class="btn btn-primary">Login</button>
+                    
                 </form>
             </div>
         </div>
