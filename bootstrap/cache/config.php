@@ -5,7 +5,7 @@
     'env' => 'local',
     'debug' => true,
     'url' => 'http://localhost',
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Ho_Chi_Minh',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'key' => 'base64:hVis1b6bmrgH/xfuP54XYkq22SzbH1xsuk9Izop3auE=',

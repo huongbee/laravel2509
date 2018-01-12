@@ -14,6 +14,21 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2>Register</h2>
+
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $err) {{$err}}
+                    <br> @endforeach
+                </div>
+                @endif @if(Session::has('error'))
+                <div class="alert alert-danger">
+                    {{Session::get('error')}}
+                </div>
+                @endif @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{Session::get('success')}}
+                </div>
+                @endif
                 <form action="{{route('admin_register')}}" method="POST">
                     {{csrf_field()}}
                     <div class="form-group">

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use App\User;
+use Hash;
 
 class AdminController extends Controller
 {
@@ -33,7 +36,25 @@ class AdminController extends Controller
         }
 
         //luu vao db
-        echo ($req->email);
-
+        // echo $req->password;
+        // echo Hash::make($req->password);
+        // die;
+        $user = new User;
+        $user->username  = $req->username;
+        $user->password = Hash::make($req->password);
+        $user->fullname = $req->fullname;
+        $user->birthdate = "2018-12-12";
+        $user->gender = "nam";
+        $user->address = "92 Le Thi Rieng";
+        $user->email = $req->email;
+        $user->phone = "12345678";
+        $user->role = 'admin';
+        $user->save();
+        if($user){
+            return redirect()->route('admin_register')->with('success',"Đăng kí thành công");
+        }
+        return redirect()->route('admin_register')->with('error',"Đăng kí không thành công");
+        
+        //insert into `users` (`username`, `password`, `fullname`, `birthdate`, `gender`, `address`, `email`, `phone`, `role`, `updated_at`, `created_at`) values (huongngoc99, $2y$10$megFOC5hgdrLzvt5S7ghNOjTPT0W6URGfSB5OIFs12lsirmKpWPHe, Hương Hương, 2018-12-12, nam, 92 Le Thi Rieng, huongnguyen08.cv@gmail.com, 12345678, admin, 2018-01-12 13:24:37, 2018-01-12 13:24:37)
     }
 }
