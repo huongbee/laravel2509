@@ -57,4 +57,7 @@ class AdminController extends Controller
         
         //insert into `users` (`username`, `password`, `fullname`, `birthdate`, `gender`, `address`, `email`, `phone`, `role`, `updated_at`, `created_at`) values (huongngoc99, $2y$10$megFOC5hgdrLzvt5S7ghNOjTPT0W6URGfSB5OIFs12lsirmKpWPHe, Hương Hương, 2018-12-12, nam, 92 Le Thi Rieng, huongnguyen08.cv@gmail.com, 12345678, admin, 2018-01-12 13:24:37, 2018-01-12 13:24:37)
     }
+    function getAdminLogin(){
+        return view('login.login');
+    }
 }

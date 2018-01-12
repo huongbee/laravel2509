@@ -196,3 +196,14 @@ Route::post('admin-register',[
     'uses' => "AdminController@postAdminRegister",
     'as' => "admin_register"
 ]);
+
+
+Route::get('admin-login',[
+    'uses' => "AdminController@getAdminLogin",
+    'as' => "admin_login"
+]);
+
+Route::post('admin-login',[
+    'uses' => "AdminController@postAdminLogin",
+    'as' => "admin_login"
+]);
