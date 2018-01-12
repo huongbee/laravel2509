@@ -14,7 +14,8 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2>Register</h2>
-                <form action="" method="POST">
+                <form action="{{route('admin_register')}}" method="POST">
+                    {{csrf_field()}}
                     <div class="form-group">
                         <label>Username:</label>
                         <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Enter username">
