@@ -186,3 +186,8 @@ Route::group(['prefix'=>'query-builder'],function(){
 Route::group(['prefix'=>'model'],function(){
     Route::get('product','HomeController@getProducts');
 });
+
+Route::get('admin-register',[
+    'uses' => "AdminController@getAdminRegister",
+    'as' => "admin_register"
+]);
