@@ -132,22 +132,22 @@ Route::get('delete-session',[
 
 Route::get('set-cookie',[
     'uses'=>'PageController@setCookie'
-]);
+])->middleware('checkLogin');
 
 Route::get('get-cookie',[
     'uses'=>'PageController@getCookie'
-]);
+])->middleware('checkLogin');
 
 
 Route::get('template-1',[
     'uses'=>'HomeController@getHome',
     'as'=>'trang-chu'
-]);
+])->middleware('checkLogin');
 
 Route::get('template-2',[
     'uses'=>'HomeController@getDetail',
     'as'=>'chi-tiet'
-]);
+])->middleware('checkLogin');
 
 Route::get('schema-demo',function(){
 
@@ -179,7 +179,7 @@ Route::get('schema-demo',function(){
 
 });
 
-Route::group(['prefix'=>'query-builder'],function(){
+Route::group(['prefix'=>'query-builder','middleware'=>'checkLogin'],function(){
     Route::get('product','HomeController@getAllProduct');
 });
 
@@ -206,4 +206,9 @@ Route::get('admin-login',[
 Route::post('admin-login',[
     'uses' => "AdminController@postAdminLogin",
     'as' => "admin_login"
+]);
+
+Route::get('admin-logout',[
+    'uses' => "AdminController@getAdminLogout",
+    'as' => "logout"
 ]);

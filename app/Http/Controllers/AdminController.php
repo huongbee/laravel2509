@@ -52,11 +52,10 @@ class AdminController extends Controller
         $user->role = 'admin';
         $user->save();
         if($user){
-            return redirect()->route('admin_register')->with('success',"Đăng kí thành công");
+            return redirect()->route('admin_login')->with('success',"Đăng kí thành công");
         }
         return redirect()->route('admin_register')->with('error',"Đăng kí không thành công");
-        
-        //insert into `users` (`username`, `password`, `fullname`, `birthdate`, `gender`, `address`, `email`, `phone`, `role`, `updated_at`, `created_at`) values (huongngoc99, $2y$10$megFOC5hgdrLzvt5S7ghNOjTPT0W6URGfSB5OIFs12lsirmKpWPHe, Hương Hương, 2018-12-12, nam, 92 Le Thi Rieng, huongnguyen08.cv@gmail.com, 12345678, admin, 2018-01-12 13:24:37, 2018-01-12 13:24:37)
+      
     }
     function getAdminLogin(){
         return view('login.login');
@@ -96,5 +95,9 @@ class AdminController extends Controller
         else{
             return redirect()->route('admin_login')->with('error',"Đăng nhập không thành công");
         }
+    }
+    function getAdminLogout(){
+        Auth::logout();
+        return redirect()->route('admin_register')->with('success',"Đăng xuất thành công");
     }
 }
